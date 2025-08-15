@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>C Syntax Checker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #1e1e1e;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #252526;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #61dafb;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .upload-label {
+            font-weight: bold;
+            color: #ccc;
+        }
+
+        input[type="file"] {
+            background: #333;
+            color: #f5f5f5;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #444;
+        }
+
+        button {
+            background: #61dafb;
+            color: #000;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #21a1f1;
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: #1e1e1e;
+            border-left: 5px solid #61dafb;
+            border-radius: 5px;
+        }
+
+        .result-box h2 {
+            margin-bottom: 10px;
+            color: #61dafb;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 14px;
+            line-height: 1.5;
+            background: #1b1b1b;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #333;
+            overflow-x: auto;
+        }
+
+        /* Success and Error Highlighting */
+        .success {
+            border-left-color: #4caf50 !important;
+        }
+        .error {
+            border-left-color: #f44336 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C Syntax Checker</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <label class="upload-label">
+                Choose a C file:
+                <input type="file" name="cfile" accept=".c,.cpp" required>
+            </label>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if result %}
+        <div class="result-box {% if 'error' in result.lower() %}error{% else %}success{% endif %}">
+            <h2>Analysis Result</h2>
+            <pre>{{ result }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
