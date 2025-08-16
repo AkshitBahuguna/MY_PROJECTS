@@ -8,7 +8,7 @@ import google.generativeai as genai
 from fpdf import FPDF  # pip install fpdf
 
 # Set your API key
-os.environ["GOOGLE_API_KEY"] = "AIzaSyCBCT25Zl49sGN6Gr32KRgrHVU7QFuUCKw"
+os.environ["GOOGLE_API_KEY"] = "enter your api key here"
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])      
 model = genai.GenerativeModel("models/gemini-1.5-pro")
 
@@ -123,3 +123,4 @@ if __name__ == "__main__":
     if not os.path.exists(app.config['RESULTS_FOLDER']):
         os.makedirs(app.config['RESULTS_FOLDER'])
     app.run(debug=True)
+
